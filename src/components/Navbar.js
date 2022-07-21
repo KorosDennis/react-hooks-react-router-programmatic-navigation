@@ -10,8 +10,14 @@ const linkStyles = {
   color: "white",
 };
 
-function Navbar({ setIsLoggedIn }) {
+function Navbar({onLogout, setIsLoggedIn }) {
   const history = useHistory();
+
+  function handleClick(){
+    onLogout();
+    history.push("/login");
+
+  }
 
   function handleLogout() {
     setIsLoggedIn(false);
@@ -51,10 +57,16 @@ function Navbar({ setIsLoggedIn }) {
           background: "darkblue",
         }}
       >
-        Login
+        login
+        
       </NavLink>
-      <button onClick={handleLogout}>Logout</button>
+         
+
+    
+      <button onClick={()=>{handleLogout();handleClick()}}>logout</button>
     </div>
+
+    
   );
 }
 
